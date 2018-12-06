@@ -1,0 +1,94 @@
+<div ng-controller="thongketheonhanviencontroller">
+    <h3 class="text-center">{{listLanguage.lblThongKeNhanVien}}</h3>
+    <div class="row add">
+        <div class="col-3 form-inline ">
+            <span class="font-weight-bold">Show: </span>
+            <select ng-model="changeRecodrs" ng-change="showRecords();" class="form-control" >
+                <option ng-value="10">10</option>
+                <option ng-value="20">20</option>
+                <option ng-value="50">50</option>
+                <option ng-value="100">100</option>
+            </select>
+        </div>
+        
+    </div>
+    <div class="container-fluid">
+        <div class="card-body">
+            <table id="example1" class="table table-bordered table-responsive-sm table-hover display">
+                <thead>
+                    <tr>
+                        <th>{{listLanguage.lblCodeStaffs}}</th>
+                        <th>{{listLanguage.lblNameDeparts}}</th>
+                        <th>{{listLanguage.lblNameStaffs}}</th>
+                        <th>{{listLanguage.lblGenderStaffs}}</th>
+                        <th>{{listLanguage.lblDateOfBirthday}}</th>
+                        <th>{{listLanguage.lblAvatarStaffs}}</th>
+                        <th>Email</th>
+                        <th>{{listLanguage.lblPhoneStaffs}}</th>
+                        <th>{{listLanguage.lblSumScore}}</th>
+                        <th>{{listLanguage.lblRecords}}</th>
+                       <th>{{listLanguage.lblAction}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="nv in listThongkeNhanVien ">
+                        <td>NV{{nv[0]}}</td>
+                        <td>{{nv[1]}}</td>
+                        <td>{{nv[2]}}</td>
+                        <td ng-if="nv[3] ==0 ">Nữ</td>
+                        <td ng-if="nv[3] ==1 ">Nam</td>
+                        <td>{{nv[4]}}</td>
+                        <td><img width="100" height="100" src="http://localhost:8080/avatar/{{nv[5]}}"></td>
+                        <td>{{nv[6]}}</td>
+                        <td>{{nv[8]}}</td>
+                        <td class="text-success font-weight-bold " ng-if="nv[11]>0 || nv[11]===0">{{nv[11]}}</td>
+                        <td class="text-danger font-weight-bold" ng-if="nv[11]<0">{{nv[11]}}</td>
+                        <td class="text-warning font-weight-bold" ng-if="nv[11]==null">No Data</td>
+                        <td class="text-success font-weight-bold " ng-if="nv[11]>0|| nv[11]===0">Thưởng</td>
+                        <td class="text-danger font-weight-bold" ng-if="nv[11]<0">Phạt</td>
+                        <td class="text-warning font-weight-bold" ng-if="nv[11]==null">No Data</td>
+                        <td><button data-toggle="modal" data-target="#recordsDetail" ng-click="showDetail(nv);" class="btn btn-outline-success">Chi Tiết</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div  class="row float-left" ng-if="sumPage>1">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <li ng-repeat="x in [].constructor(sumPage) track by $index" ><a ng-click="redirectPage($index)" class="page-link">{{$index+1}}</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" id="recordsDetail" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <h3 class="text-lg-center">Thông tin chi tiết </h3>
+                <table ng-show="recordsDetail != null " id="example1" class="table table-bordered table-responsive-sm table-hover display">
+                    <thead>
+                        <tr>
+                            <th>Lý Do</th>
+                            <th>Hình Thức</th>
+                            <th>Ngày Ghi Nhận</th>
+                            
+                        </tr>
+                        <tbody>
+                            <tr class="font-weight-bold" ng-repeat="list in recordsDetail" >
+                                <td>{{list.reason}}</td>
+                                <td class="text-success font-weight-bold" ng-if="list.records_Type == 1">Thưởng</td>
+                                <td class="text-danger font-weight-bold" ng-if="list.records_Type == -1">Phạt</td>
+                                <td>{{list.date}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="col-5 mt-1 mb-1 float-sm-right" >
+                        <a ng-click="senMailToStaffs();" class="btn btn-danger btn-sm">
+                            <span class="fa fa-envelope-o
+                            "></span> Send Mail
+                        </a>
+                        <button class="btn bg-success btn-sm" data-dismiss="modal">Bỏ Qua</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

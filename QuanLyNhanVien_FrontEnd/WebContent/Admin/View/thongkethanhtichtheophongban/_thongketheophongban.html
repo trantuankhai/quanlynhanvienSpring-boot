@@ -1,0 +1,46 @@
+<div ng-controller="thongketheophongbancontroller">
+    <h3 class="text-danger text-center">{{listLanguage.lblThongKePhongBan}}</h3>
+    <div class="container-fluid">
+        <div class="row add">
+            <div class="col-3 form-inline ">
+                <span class="font-weight-bold">Show: </span>
+                <select ng-model="changeRecords" ng-change="showChange();" class="form-control" >
+                    <option ng-value="10">10</option>
+                    <option ng-value="20">20</option>
+                    <option ng-value="50">50</option>
+                    <option ng-value="100">100</option>
+                </select>
+            </div>
+        </div>
+        <div class="card-body">
+            <table id="thongketheophongban" class="table table-bordered table-responsive-sm table-hover display">
+                <thead>
+                    <tr>
+                        <th>{{listLanguage.lblCodeDeparts}}</th>
+                        <th>{{listLanguage.lblNameDeparts}}</th>
+                        <th>{{listLanguage.lblSumScore}}</th>
+                        <th>{{listLanguage.lblRecords}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="pb in listThanhTichPhongBan ">
+                        <td>PB{{pb[0]}}</td>
+                        <td>{{pb[1]}}</td>
+                        <td  ng-if="pb[2] !=null">{{pb[2]}}</td>
+                        <td class="text-warning font-weight-bold" ng-if="pb[2] ==null">No Data</td>
+                        <td ng-if="pb[2] < 0" class = "text-danger font-weight-bold">Phạt </td>
+                        <td ng-if="pb[2] > 0 || pb[2]===0" class = "text-success font-weight-bold">Thưởng</td>
+                        <td ng-if="pb[2] ==null" class = "text-warning font-weight-bold">No Data</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div ng-show="sumPage>1" class="row float-left">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <li ng-repeat="x in [].constructor(sumPage) track by $index" ><a ng-click="redirectPage($index)" class="page-link">{{$index+1}}</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <title>Admin</title>
+         <!-- <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"> -->
+        <!-- Bootstrap CSS -->
+        <link href="css/lib/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <!-- BEGIN CSS for this page -->
+        <!-- END CSS for this page -->
+        
+        <!-- Font Awesome CSS -->
+        <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <!-- CSS Kendo -UI
+        <link rel="stylesheet" type="text/css" href="css/lib/kendo.black.mobile.min.css">
+        <link rel="stylesheet" type="text/css" href="css/lib/kendo.rtl.min.css">
+        <link rel="stylesheet" type="text/css" href="css/lib/kendo.default.min.css">
+        <link rel="stylesheet" type="text/css" href="css/lib/kendo.mobile.all.min.css">
+        -->
+        <link rel="stylesheet" href="https://daneden.github.io/animate.css/animate.min.css">
+
+        <link href="css/app/admin-styles.css" rel="stylesheet" type="text/css" />
+        <link href="css/app/styles.css" rel="stylesheet" type="text/css" />
+        <script src="ckeditor/ckeditor.js"></script>
+               
+        <!-- Custom CSS -->
+    </head>
+    <body ng-app="adminApp" ng-controller="adminController">
+        <div id="main">
+            <!-- top bar navigation -->
+            <div class="headerbar">
+                <!-- LOGO -->
+                <div class="headerbar-left">
+                    <a href="#!" class="logo"><img alt="Logo" src="images/logo.png" /> <span>Admin</span></a>
+                </div>
+                <nav class="navbar-custom">
+                    <ul class="list-inline float-right mb-0">
+                        <li class="float-left">
+                            <div>
+                                <div class="col-3 mt-2 form-inline">
+                                    <select class="form-control" ng-model="language" ng-change="changeLanguage();">
+                                        <option value="vi" >VI_VN</option>
+                                        <option value="us" >EN_US</option>
+                                    </select>
+                                </div>
+                                
+                            </div>
+                        </li>
+                        <li class="list-inline-item dropdown notif">
+                            <a class="nav-link dropdown-toggle nav-user" data-toggle="dropdown" role="button" aria-haspopup="false" aria-expanded="false">
+                                <img src="images/avata.jpg" alt="Profile image" class="avatar-rounded">
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
+                                <!-- item-->
+                                <div class="dropdown-item noti-title">
+                                    <h5 class="text-overflow"><small>Hello, </small> </h5>
+                                </div>
+                                <!-- item-->
+                                <a href="#!" style="color: black;" class="dropdown-item notify-item">
+                                    <i class="fa fa-user"></i> <span>Profile</span>
+                                </a>
+                                <!-- item-->
+                                <button class="dropdown-item notify-item" data-toggle="modal" data-target="#changepassword">
+                                <i class="fa fa-external-link"></i> <span>Đổi mật khẩu</span>
+                                </button>
+                                <!-- item-->
+                                <button ng-click="logOut();" class="dropdown-item notify-item">
+                                <i class="fa fa-external-link"></i> <span>Đăng xuất</span>
+                                </button>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="list-inline menu-left mb-0">
+                        <li class="float-left">
+                            <button class="button-menu-mobile open-left">
+                            <i class="fa fa-fw fa-bars"></i>
+                            </button>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <!-- End Navigation -->
+            
+            
+            <!-- Left Sidebar -->
+            <!--  <div side-Bar danh-Muc="hihi"> </div> -->
+            <div class="left main-sidebar">
+                
+                <div class="sidebar-inner leftscroll">
+                    <div id="sidebar-menu">
+                        
+                        <ul>
+                            <li class="submenu">
+                                <a class="active" href="index.html"><i class="fa fa-fw fa-bars"></i><span> Dashboard </span> </a>
+                            </li>
+                            <li class="submenu" >
+                                <a href="#!quan-ly-phong-ban"><i class="fa fa-bank"></i><span> {{listLanguage.lblDeparts}} </span> </a>
+                                <!-- <a ng-if="language == 'vi'" href="#!quan-ly-phong-ban"><i class="fa fa-bank"></i><span> Quản Lý Phòng Ban </span> </a>
+                                <a ng-if="language == 'us'" href="#!quan-ly-phong-ban"><i class="fa fa-bank"></i><span>Departs Manager</span> </a> -->
+                            </li>
+                            
+                            <li class="submenu" >
+                                <a href="#!quan-ly-nhan-vien"><i class="fa fa-users"></i><span> {{listLanguage.lblStaffs}} </span> </a>
+                                <!--  <a ng-if="language == 'vi'" href="#!quan-ly-nhan-vien"><i class="fa fa-users"></i><span> Quản Lý Nhân Viên </span> </a>
+                                <a ng-if="language == 'us'" href="#!quan-ly-nhan-vien"><i class="fa fa-users"></i><span> Staffs Manager </span> </a> -->
+                            </li>
+                            <li  class="submenu">
+                                <a><i class="fa fa-line-chart"></i> <span> {{listLanguage.lblThongKe}}</span> <span class="menu-arrow"></span></a>
+                                <ul class="list-unstyled" >
+                                    <li ><a href="#!thong-ke-thanh-tich-nhan-vien">{{listLanguage.lblThongKeByStaffs}}</a></li>
+                                    <li ><a href="#!thong-ke-thanh-tich-phong-ban">{{listLanguage.lblThongKeByDeparts}}</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <!-- End Sidebar -->
+            <div class="content-page">
+                
+                <!-- Start content -->
+                <div class="content" ng-view>
+                    <!-- NỘI DUNG TRANG WEB-->
+                    
+                    <!-- KẾT THÚC NỘI DUNG TRANG WEB-->
+                </div>
+                <!-- END content -->
+            </div>
+            <!-- END content-page -->
+            
+            <footer class="footer">
+                <span class="text-right">
+                    Copyright 2018
+                </span>
+                <span class="float-right">
+                    Powered by <a  href="#"><b>TTK</b></a>
+                </span>
+            </footer>
+            
+        </div>
+        <!-- Lib Kendo-Ui
+        <script src="js/lib/kendo.all.min.js"></script>
+        <script src="js/lib/jszip.min.js"></script>
+        -->
+        <!-- JQUERY -->
+        <script type="text/javascript"  src="https://code.jquery.com/jquery-3.3.1.js"></script>
+        <!-- END main -->
+        
+        <script src="js/lib/popper.min.js"></script>
+        <script src="js/lib/bootstrap.min.js"></script>
+        <!-- App js -->
+        <script src="js/lib/pikeadmin.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.4/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+        <!-- CUSTOM JS -->
+        <script src="js/app/admin.js"></script>
+        <script src="View/quanlynhanvien/quanLyNhanVienServices.js"></script>
+        <script src="View/quanlynhanvien/quanLyNhanVienController.js"></script>
+        <script src="View/quanlyphongban/quanLyPhongBanController.js"></script>
+        <script src="View/quanlyphongban/quanLyPhongBanServices.js"></script>
+        <script src="View/thongkethanhtichtheophongban/thongKeTheoPhongBanController.js"></script>
+        <script src="View/thongkethanhtichtheophongban/thongKeTheoPhongBanServices.js"></script>
+        <script src="View/thongkethanhtichtheonhanvien/thongKeTheoNhanVienController.js"></script>
+        <script src="View/thongkethanhtichtheonhanvien/thongKeTheoNhanVienServices.js"></script>
+        <script src="View/Dashboard/dashboardController.js"></script>
+        <script src="View/Dashboard/dashboardServices.js"></script>
+        
+        
+        
+        
+    </body>
+</html>

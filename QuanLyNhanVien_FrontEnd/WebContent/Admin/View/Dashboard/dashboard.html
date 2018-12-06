@@ -1,0 +1,157 @@
+<div ng-controller="dashboardController" >
+    <marquee><div class="text-danger font-weight-bold "><h3>{{listLanguage.lblTop10NhanVien}}</h3></div></marquee>
+    <div class="container-fluid">
+        <div class="col-md-12 bootstrap snippets">
+            <div class="x_panel">
+                <div class="x_content">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-4 col-xs-4 animated fadeInDown">
+                            <div class="well profile_view">
+                                <div class="col-sm-12">
+                                    <h4 class="brief"><i>Digital Strategist</i></h4>
+                                    <div class="left col-xs-7">
+                                        <h2>Nicole Pearson</h2>
+                                        <p><strong>About: </strong> Web Designer / UI. </p>
+                                        <ul class="list-unstyled">
+                                            <li><i class="fa fa-phone"></i> Address: </li>
+                                        </ul>
+                                    </div>
+                                    <div class="right col-xs-5 text-center">
+                                        <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="img-circle img-responsive">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 bottom text-center">
+                                    <div class="col-xs-12 col-sm-6 emphasis">
+                                        <p class="ratings">
+                                            <a>4.0</a>
+                                            <a href="#"><span class="fa fa-star"></span></a>
+                                            <a href="#"><span class="fa fa-star"></span></a>
+                                            <a href="#"><span class="fa fa-star"></span></a>
+                                            <a href="#"><span class="fa fa-star"></span></a>
+                                            <a href="#"><span class="fa fa-star-o"></span></a>
+                                        </p>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 emphasis">
+                                        <button type="button" class="btn btn-success btn-xs">
+                                        <i class="fa fa-user"></i>
+                                        <i class="fa fa-comments-o"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-primary btn-xs">
+                                        <i class="fa fa-user"></i> View Profile
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <style type="text/css">
+        .profile_view {
+        margin-bottom: 20px;
+        display: inline-block;
+        width: 100%;
+        -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2),0 6px 10px 0 rgba(0,0,0,0.3);
+        box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2),0 6px 10px 0 rgba(0,0,0,0.3);
+        }
+        .profile_view:hover {
+        -webkit-box-shadow: 0 14px 12px 0 rgba(0,0,0,0.17),0 20px 40px 0 rgba(0,0,0,0.3);
+        box-shadow: 0 14px 12px 0 rgba(0,0,0,0.17),0 20px 40px 0 rgba(0,0,0,0.3);
+        }
+        .well.profile_view {
+        padding: 10px 0 0;
+        }
+        .well.profile_view .divider {
+        border-top: 1px solid #e5e5e5;
+        padding-top: 5px;
+        margin-top: 5px;
+        }
+        .well.profile_view .ratings {
+        margin-bottom: 0;
+        }
+        .pagination.pagination-split li {
+        display: inline-block;
+        margin-right: 3px;
+        }
+        .pagination.pagination-split li a {
+        border-radius: 4px;
+        color: #768399;
+        -moz-border-radius: 4px;
+        -webkit-border-radius: 4px;
+        }
+        .well.profile_view {
+        background: #fff;
+        }
+        .well.profile_view .bottom {
+        margin-top: -20px;
+        background: #F2F5F7;
+        padding: 9px 0;
+        border-top: 1px solid #E6E9ED;
+        }
+        .well.profile_view .left {
+        margin-top: 20px;
+        }
+        .well.profile_view .left p {
+        margin-bottom: 3px;
+        }
+        .well.profile_view .right {
+        margin-top: 0px;
+        padding: 10px;
+        }
+        .well.profile_view .img-circle {
+        border: 1px solid #E6E9ED;
+        padding: 2px;
+        }
+        .well.profile_view h2 {
+        margin: 5px 0;
+        font-size:14px;
+        font-weight:bold;
+        }
+        .well.profile_view .ratings {
+        text-align: left;
+        font-size: 16px;
+        }
+        .well.profile_view .brief {
+        margin: 0;
+        font-weight: 300;
+        }
+        .profile_left {
+        background: white;
+        }
+        </style>
+        <!-- <div class="card-body">
+            <table id="example1" class="table table-bordered table-responsive-xl table-hover display">
+                <thead>
+                    <tr>
+                        <th>{{listLanguage.lblCodeStaffs}}</th>
+                        <th>{{listLanguage.lblNameDeparts}}</th>
+                        <th>{{listLanguage.lblNameStaffs}}</th>
+                        <th>{{listLanguage.lblGenderStaffs}}</th>
+                        <th>{{listLanguage.lblDateOfBirthday}}</th>
+                        <th>{{listLanguage.lblAvatarStaffs}}</th>
+                        <th>Email</th>
+                        <th>{{listLanguage.lblPhoneStaffs}}</th>
+                        <th>{{listLanguage.lblRecords}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="list in thanhtich">
+                        <td>NV{{list[0]}}</td>
+                        <td>{{list[1]}}</td>
+                        <td>{{list[2]}}</td>
+                        <td ng-if="list[3]==0">Nữ</td>
+                        <td ng-if="list[3]==1">Nam</td>
+                        <td>{{list[4]}}</td>
+                        <td><img width="100" height="100" src="http://localhost:8080/avatar/{{list[5]}}"></td>
+                        <td>{{list[6]}}</td>
+                        <td>{{list[8]}}</td>
+                        <td class="text-success font-weight-bold" ng-if="list[11]>0 || list[11]==0" >{{list[11]}}</td>
+                        <td class="text-danger font-weight-bold" ng-if="list[11]<0" >{{list[11]}}</td>
+                        <td class="text-warning font-weight-bold" ng-if="list[11]==null" >No Data</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div> -->
+    </div>
+</div>
